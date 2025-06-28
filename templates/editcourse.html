@@ -1,0 +1,27 @@
+{% extends 'admin_index.html' %}
+{% block body %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Edit Course</h5>
+        </div>
+        <div class="card-body">
+            <form id="form1" name="form1" method="post" action="/editcoursecode">
+                <div class="mb-3">
+                    <label for="department" class="form-label">Department</label>
+                    <select id="department" name="select" class="form-select" required>
+                        {% for i in dep %}
+                            <option value="{{ i.id }}" {% if val.department.id == i.id %} selected {% endif %}>{{ i.departmentname }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="courseName" class="form-label">Course Name</label>
+                    <input type="text" id="courseName" name="textfield" class="form-control" value="{{ val.coursename }}" required pattern="[A-Z a-z.]{3,25}" />
+                </div>
+                <button type="submit" name="Submit" class="btn btn-outline-success">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

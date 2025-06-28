@@ -1,0 +1,38 @@
+{% extends 'hod_index.html' %}
+{% block body %}
+<div class="container mt-4">
+    <h2 class="mb-4">Staff List</h2>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Staff Members</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+        {% for i in val %}
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <img src="{{ i.image.url }}" class="card-img-top" alt="{{ i.name }}" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">{{ i.name }}</h5>
+                    <p class="card-text">
+                        <strong>Email:</strong> {{ i.email }}<br>
+                        <strong>Phone:</strong> {{ i.phone }}<br>
+                        <strong>Place:</strong> {{ i.place }}<br>
+                        <strong>PIN:</strong> {{ i.pin }}<br>
+                        <strong>Post:</strong> {{ i.post }}<br>
+                    </p>
+                    <div class="d-flex justify-content-between">
+                        <a href="editstaff/{{ i.id }}#about" class="btn btn-outline-info btn-sm">Edit</a>
+                        <a href="deletestaff/{{ i.id }}" class="btn btn-outline-danger btn-sm">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+            <a href="/addstaff#about" class="btn btn-outline-success">Add New Staff</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

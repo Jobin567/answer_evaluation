@@ -1,0 +1,21 @@
+{% extends 'admin_index.html' %}
+{% block body %}
+
+<body>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Add Department Code</h5>
+        </div>
+        <div class="card-body">
+            <form id="form1" name="form1" method="post" action="adddeptcode">
+                <div class="mb-3">
+                    <label for="departmentName" class="form-label">Department Name</label>
+                    <input type="text" id="departmentName" name="textfield" class="form-control" required pattern="[A-Za-z.]{3,25}" />
+                </div>
+                <button type="submit" name="Submit" class="btn btn-outline-success">Add</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

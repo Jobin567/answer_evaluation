@@ -1,0 +1,34 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'admin_index.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-dark">
+    <tr>
+      <th>COURSE NAME</th>
+      <th>SUBJECT</th>
+      <th>SEM</th>
+      <th>&nbsp;</th>
+    </tr>
+      {% for i in val %}
+    <tr>
+      <td>&nbsp;{{ i.courseid.coursename }}</td>
+      <td>&nbsp;{{ i.subjectname }}</td>
+      <td>&nbsp;{{ i.sem }}</td>
+      <td><a href="deletesubject/{{ i.id }}"class="btn btn-outline-danger">delete</a></td>
+    </tr>
+      {% endfor %}
+    <tr>
+      <td colspan="4"><a href="/addsubject#about" class="btn btn-outline-success" >addnew</a></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}
+{#</body>#}
+{#</html>#}

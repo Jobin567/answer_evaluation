@@ -1,0 +1,52 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'admin_index.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/viewhod_search#about">
+  <table class="table table-dark">
+    <tr>
+      <td colspan="10"><div align="center">Name&nbsp;&nbsp;<label>
+        <input type="text" name="search" value="{{ search }}" class="form-control" />
+       </label> <input type="submit" name="Submit" value="Search"  class="btn btn-success"/>
+      </div> </td>
+    </tr>
+    <tr>
+      <th>SNO</th>
+      <th>NAME</th>
+      <th>EMAIL</th>
+      <th>PHONE</th>
+      <th>PLACE</th>
+      <th>PIN</th>
+      <th>POST</th>
+      <th>DEPARTMENT</th>
+      <th>&nbsp;</th>
+    </tr>
+      {% for i in val %}
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{ i.name }}</td>
+      <td>{{i.email  }}</td>
+      <td>{{ i.phone }}&nbsp;</td>
+      <td>{{ i.place }}&nbsp;</td>
+      <td>{{ i.pin }}&nbsp;</td>
+      <td>{{ i.post }}&nbsp;</td>
+
+      <td>{{ i.dep.departmentname }}&nbsp;</td>
+      <td><p><a href="edithod/{{ i.id }}#about"class="btn btn-outline-info">edit</a></p>
+      <p><a href="deletehod/{{ i.login.id }}"class="btn btn-outline-danger">delete</a></p></td>
+    </tr>
+      {% endfor %}
+    <tr>
+      <td colspan="10"><a href="addhod#about"class="btn btn-outline-success">addnew</a></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}
+{#</body>#}
+{#</html>#}

@@ -1,0 +1,51 @@
+{% extends 'hod_index.html' %}
+{% block body %}
+<div class="container mt-4">
+    <h2>Edit Student</h2>
+    <form action="/editstudent_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="name">NAME</label>
+                    <input type="text" id="name" class="form-control" name="textfield" value="{{ val.name }}" required pattern="[A-Z a-z.]{3,25}" />
+                </div>
+                <div class="form-group">
+                    <label for="email">EMAIL</label>
+                    <input type="email" id="email" class="form-control" name="textfield2" value="{{ val.email }}" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" />
+                </div>
+                <div class="form-group">
+                    <label for="phone">PHONE</label>
+                    <input type="text" id="phone" class="form-control" name="textfield3" value="{{ val.phone }}" required pattern="[6789][0-9]{9}" />
+                </div>
+                <div class="form-group">
+                    <label for="place">PLACE</label>
+                    <input type="text" id="place" class="form-control" name="textfield4" value="{{ val.place }}" pattern="[A-Z a-z.]{3,25}" />
+                </div>
+                <div class="form-group">
+                    <label for="pin">PIN</label>
+                    <input type="text" id="pin" class="form-control" name="textfield5" value="{{ val.pin }}" required pattern="[0-9]{6}" />
+                </div>
+                <div class="form-group">
+                    <label for="post">POST</label>
+                    <input type="text" id="post" class="form-control" name="textfield6" value="{{ val.post }}" pattern="[A-Z a-z.]{3,25}" />
+                </div>
+                <div class="form-group">
+                    <label for="image">IMAGE</label>
+                    <input type="file" id="image" class="form-control" name="file">
+                    <img src="{{ val.image.url }}" width="100" height="100" class="mt-2">
+                </div>
+                <div class="form-group">
+                    <label for="course">COURSE</label>
+                    <select id="course" class="form-control" name="select" required>
+                        {% for i in corse %}
+                            <option value="{{ i.id }}">{{ i.coursename }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            <br/>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

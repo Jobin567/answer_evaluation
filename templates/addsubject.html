@@ -1,0 +1,41 @@
+{% extends 'admin_index.html' %}
+{% block body %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Add Subject</h5>
+        </div>
+        <div class="card-body">
+            <form id="form1" name="form1" method="post" action="addsubjectcode">
+                <div class="mb-3">
+                    <label for="course" class="form-label">Course</label>
+                    <select id="course" name="select" class="form-select" required>
+                        {% for i in val %}
+                            <option value="{{ i.id }}">{{ i.coursename }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" id="subject" name="textfield" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label for="semester" class="form-label">Semester</label>
+                    <select id="semester" name="select2" class="form-select" required>
+                        <option value="" disabled selected>Select Semester</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+                <button type="submit" name="Submit" class="btn btn-outline-success">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

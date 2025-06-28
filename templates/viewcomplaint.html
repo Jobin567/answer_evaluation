@@ -1,0 +1,39 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'admin_index.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/viewcomplaint_search#about">
+  <table class="table table-dark">
+    <tr>
+      <td colspan="5"><div align="center"> <label>
+          <input type="date" name="search" value="{{search}}" class="form-control" required/>
+       </label> <input type="submit" name="Submit" value="search" class="btn btn-success"/></div>
+      </td>
+    </tr>
+    <tr>
+      <th>SNO</th>
+      <th>STUDENT NAME</th>
+      <th>COMPLAINT</th>
+      <th>DATE</th>
+      <th>&nbsp;</th>
+    </tr>
+      {% for i in val %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>{{ i.STUDENT.name }}</td>
+      <td>{{ i.complaint }}</td>
+      <td>&nbsp;{{ i.date }}</td>
+      <td>{% if i.reply == 'pending' %}<a href="sendcomplaint/{{ i.id }}">reply</a>{% else %}{{ i.reply }}{% endif %}</td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+{% endblock %}
+{#</body>#}
+{#</html>#}
