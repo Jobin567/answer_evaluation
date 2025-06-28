@@ -1,0 +1,53 @@
+{#{% extends 'staff/newstaffindex.html' %}#}
+{#{% block body %}#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="300" border="1" class="table table-dark">#}
+{#    <tr>#}
+{#      <th>subject</th>#}
+{#      <th>course</th>#}
+{#      <th>sem</th>#}
+{#    </tr>#}
+{#    {% for i in data %}#}
+{#    <tr>#}
+{##}
+{#      <td>&nbsp;{{ i.SUBJECT.subject }}</td>#}
+{#      <td>&nbsp;{{ i.SUBJECT.COURSE.course }}</td>#}
+{#      <td>&nbsp;{{ i.SUBJECT.Sem}}</td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{##}
+{#  </table>#}
+{#</form>#}
+{#{% endblock %}#}
+
+{% extends 'staff/newstaffindex.html' %}
+{% block body %}
+<div class="container mt-5">
+  <!-- Table Design -->
+  <div class="card shadow-sm">
+    <div class="card-header bg-dark text-white">
+      <h5 class="mb-0">Subjects List</h5>
+    </div>
+    <div class="card-body p-0">
+      <table class="table table-striped table-hover mb-0">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Subject</th>
+            <th scope="col">Course</th>
+            <th scope="col">Semester</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in data %}
+          <tr>
+            <td>{{ i.subject.subjectname }}</td>
+            <td>{{ i.subject.courseid.courseNAME }}</td>
+            <td>{{ i.subject.SEM }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,93 @@
+{#{% extends 'staff/newstaffindex.html' %}#}
+{#{% block body %}#}
+{##}
+{#<form id="form1" name="form1" method="post" action="/srch_prv_qs">#}
+{#  <table width="256" border="1" class="table table-dark">#}
+{#    <tr>#}
+{#      <td width="50">Date</td>#}
+{#      <td colspan="2"><label>#}
+{#        <input type="date" name="textfield" />#}
+{#      </label></td>#}
+{#      <td width="80"><label>#}
+{#        <input type="submit" name="Submit" value="search" />#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>subject</td>#}
+{#      <td width="52">questions</td>#}
+{#      <td width="46">year</td>#}
+{#      <td>&nbsp;</td>#}
+{#    </tr>#}
+{#      {% for i in sub %}#}
+{#    <tr>#}
+{#      <td>{{ i.assign_sub.SUBJECT.subject }}</td>#}
+{#      <td>{{ i.question }}</td>#}
+{#      <td>{{ i.year }}</td>#}
+{##}
+{#      <td><p><a href="edit_prv_qs/{{ i.id }}">edit</a></p>#}
+{#      <p><a href="pq_delete/{{ i.id }}">delete</a></p></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#    <tr>#}
+{#      <td colspan="4"><a href="add_prev_qstn">ADD</a></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#{% endblock %}#}
+
+{% extends 'staff/newstaffindex.html' %}
+{% block body %}
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">Search Previous Questions</h5>
+    </div>
+    <div class="card-body">
+      <form id="form1" name="form1" method="post" action="/srch_prv_qs">
+        <div class="row mb-3">
+          <label for="dateInput" class="col-sm-2 col-form-label">Date</label>
+          <div class="col-sm-8">
+            <input type="date" name="textfield" id="dateInput" class="form-control" required />
+          </div>
+          <div class="col-sm-2">
+            <button type="submit" name="Submit" class="btn btn-success w-100">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card shadow-sm mt-4">
+    <div class="card-header bg-secondary text-white">
+      <h5 class="mb-0">Previous Questions</h5>
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered table-dark">
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>Questions</th>
+            <th>Year</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in sub %}
+          <tr>
+            <td>{{ i.assign_sub.SUBJECT.subject }}</td>
+            <td>{{ i.question }}</td>
+            <td>{{ i.year }}</td>
+            <td>
+{#              <a href="edit_prv_qs/{{ i.id }}" class="btn btn-info btn-sm">Edit</a>#}
+              <a href="pq_delete/{{ i.id }}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="text-center mt-3">
+        <a href="add_prev_qstn" class="btn btn-primary">Add New Question</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

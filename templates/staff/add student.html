@@ -1,0 +1,124 @@
+{#{% extends 'staff/newstaffindex.html' %}#}
+{#{% block body %}#}
+{##}
+{#<form id="form1" name="form1" method="post" action="search_std">#}
+{#  <table width="271" border="1" class="table table-dark">#}
+{#    <tr>#}
+{#      <th colspan="6" scope="col">course#}
+{#        <label>#}
+{#        <select name="select">#}
+{#            {% for i in val %}#}
+{#            <option value="{{ i.id }}">{{ i.course }}</option>#}
+{#            {% endfor %}#}
+{#        </select>#}
+{#</label></th>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="4"><div align="center">sem#}
+{#        <label>#}
+{#        <select name="select2">#}
+{#            <option>1</option>#}
+{#            <option>2</option>#}
+{#            <option>3</option>#}
+{#            <option>4</option>#}
+{#            <option>5</option>#}
+{#            <option>6</option>#}
+{#            <option>7</option>#}
+{#            <option>8</option>#}
+{#        </select>#}
+{#        </label>#}
+{#      </div></td>#}
+{#        <td colspan="3">#}
+{#            <input type="submit" value="search">#}
+{#        </td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td width="36">name </td>#}
+{#      <td width="41">gender</td>#}
+{#      <td width="32">place</td>#}
+{#      <td width="37">phone</td>#}
+{#      <td width="31">email</td>#}
+{#      <td width="54">&nbsp;</td>#}
+{#    </tr>#}
+{#  {% for i in val1 %}#}
+{#    <tr>#}
+{#      <td><img src="{{ i.image.url }}" width="100" height="100"/> <br/>{{ i.firstname }} {{ i.Lname }}</td>#}
+{#      <td>&nbsp;{{ i.gender }}</td>#}
+{#      <td>{{ i.place }}</td>#}
+{#      <td>{{ i.phone }}</td>#}
+{#      <td>&nbsp;{{ i.email }}</td>#}
+{#      <td>{% if i.LOGIN.type == "pending" %}<p><a href="acpt_std/{{ i.LOGIN.id }}">accept</a></p>#}
+{#      <p><a href="rjt_std/{{ i.LOGIN.id }}">reject</a></p>{% else %} {{ i.LOGIN.type }} {% endif %}</td>#}
+{#    </tr>#}
+{#  {% endfor %}#}
+{#  </table>#}
+{#</form>#}
+{#{% endblock %}#}
+
+
+{% extends 'staff/newstaffindex.html' %}
+{% block body %}
+
+<div class="container mt-5">
+  <!-- Form Section -->
+  <form id="form1" name="form1" method="post" action="/search_std#about" class="mb-4">
+    <div class="row">
+      <div class="col-md-6">
+        <label for="course-select" class="form-label"><strong>Course</strong></label>
+        <select name="select" id="course-select" class="form-select">
+          {% for i in val %}
+          <option value="{{ i.id }}">{{ i.coursename }}</option>
+          {% endfor %}
+        </select>
+      </div>
+{#      <div class="col-md-4">#}
+{#        <label for="sem-select" class="form-label"><strong>Semester</strong></label>#}
+{#        <select name="select2" id="sem-select" class="form-select">#}
+{##}
+{#          <option>1</option>#}
+{#          <option>2</option>#}
+{#          <option>3</option>#}
+{#          <option>4</option>#}
+{#          <option>5</option>#}
+{#          <option>6</option>#}
+{#          <option>7</option>#}
+{#          <option>8</option>#}
+{##}
+{#        </select>#}
+{#      </div>#}
+      <div class="col-md-2 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary w-100">Search</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Cards Section -->
+  <div class="row g-4">
+    {% for i in val1 %}
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <img src="{{ i.image.url }}" class="card-img-top" alt="{{ i.name }}'s image" style="height: 200px; object-fit: cover;">
+        <div class="card-body">
+          <h5 class="card-title">{{ i.name }}</h5>
+          <p class="card-text">
+
+            <strong>Place:</strong> {{ i.place }}<br>
+            <strong>Phone:</strong> {{ i.phone }}<br>
+            <strong>Email:</strong> {{ i.email }}
+          </p>
+        </div>
+        <div class="card-footer text-center">
+          {% if i.LOGIN.type == "pending" %}
+          <a href="acpt_std/{{ i.LOGIN.id }}" class="btn btn-success btn-sm">Accept</a>
+          <a href="rjt_std/{{ i.LOGIN.id }}" class="btn btn-danger btn-sm">Reject</a>
+          {% else %}
+          <span class="badge bg-info">{{ i.LOGIN.type }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

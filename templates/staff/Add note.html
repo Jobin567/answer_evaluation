@@ -1,0 +1,59 @@
+{#{% extends 'staff/newstaffindex.html' %}#}
+{#{% block body %}#}
+{##}
+{#<form action="/mang_notes_post" method="post" enctype="multipart/form-data" name="form1" id="form1">#}
+{#  <table width="200" border="1" class="table table-dark">#}
+{#    <tr>#}
+{#      <td width="107">Subject</td>#}
+{#      <td width="77"><label>#}
+{#        <select name="select">#}
+{#            {% for i in subj %}#}
+{#            <option value="{{ i.SUBJECT.id }}">{{ i.SUBJECT.subject }}</option>#}
+{#            {% endfor %}#}
+{#        </select>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>Note</td>#}
+{#      <td><label>#}
+{#        <input type="file" name="file" />#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2"><label>#}
+{#        <input type="submit" name="Submit" value="ADD" />#}
+{#      </label></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#{% endblock %}#}
+
+{% extends 'staff/newstaffindex.html' %}
+{% block body %}
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-dark text-white">
+      <h5 class="mb-0">Add New Note</h5>
+    </div>
+    <div class="card-body">
+      <form action="/mang_notes_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+        <div class="mb-3">
+          <label for="subjectSelect" class="form-label">Subject</label>
+          <select name="select" id="subjectSelect" class="form-select" required>
+            {% for i in subj %}
+            <option value="{{ i.SUBJECT.id }}">{{ i.SUBJECT.subject }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="fileInput" class="form-label">Upload Note</label>
+          <input type="file" name="file" id="fileInput" class="form-control" required />
+        </div>
+        <div class="text-center">
+          <button type="submit" name="Submit" class="btn btn-success">Add Note</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'staff/newstaffindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/update_exam_post">
+  <table width="200" border="1" class="table table-dark">
+    <tr>
+      <th scope="col">Subject</th>
+      <th scope="col"><label>
+        <select name="select">
+            {%  for i in ob %}
+              <option value="{{ i.SUBJECT.id }}">{{ i.SUBJECT.subject }}</option>
+            {% endfor %}
+        </select>
+      </label></th>
+    </tr>
+    <tr>
+      <td><div align="center"><strong>Date</strong></div></td>
+      <td><label>
+        <div align="center">
+          <input type="date" name="d1" value="{{ date }}">
+          </div>
+      </label></td>
+    </tr>
+    <tr>
+      <td><div align="center"><strong>Time</strong></div></td>
+      <td><label>
+        <div align="center">
+          <input type="time" value="{{ time }}" name="t1">
+          </div>
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><label>
+        <div align="center">
+          <input type="submit" name="EDIT" value="update"  class="btn btn-success"/>
+          </div>
+      </label></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

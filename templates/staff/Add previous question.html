@@ -1,0 +1,70 @@
+{#{% extends 'staff/newstaffindex.html' %}#}
+{#{% block body %}#}
+{##}
+{#<form action="add_prv_qus" method="post" enctype="multipart/form-data" name="form1" id="form1">#}
+{#  <table width="319" border="1" class="table table-dark">#}
+{#      <tr>#}
+{#          <th scope="row">Subject#}
+{#        <label>#}
+{#       <select name="select">#}
+{#           {% for i in val %}#}
+{#           <option value="{{ i.id }}">{{ i.SUBJECT.subject }}</option>#}
+{#           {% endfor %}#}
+{#       </select>#}
+{#      </label></th>#}
+{#      </tr>#}
+{##}
+{#    <tr>#}
+{#      <th scope="row">questions#}
+{#        <label>#}
+{#        <input type="file" name="textfield" required pattern="[A-Z a-z.]{1,100}" />#}
+{#      </label></th>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <th scope="row"><label>Year#}
+{#        <input type="text" name="textfield2" />#}
+{#      </label></th>#}
+{#    </tr>#}
+{#  </table>#}
+{#  <label>#}
+{#  <input type="submit" name="Submit" value="ADD" />#}
+{#  </label>#}
+{#</form>#}
+{#{% endblock %}#}
+
+{% extends 'staff/newstaffindex.html' %}
+{% block body %}
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-dark text-white">
+      <h5 class="mb-0">Add Previous Question</h5>
+    </div>
+    <div class="card-body">
+      <form action="add_prv_qus" method="post" enctype="multipart/form-data" name="form1" id="form1">
+        <div class="mb-3">
+          <label for="subjectSelect" class="form-label">Subject</label>
+          <select name="select" id="subjectSelect" class="form-select" required>
+            {% for i in val %}
+              <option value="{{ i.id }}">{{ i.SUBJECT.subject }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="questionFile" class="form-label">Upload Question File</label>
+          <input type="file" name="textfield" id="questionFile" class="form-control" required pattern="[A-Za-z0-9 ]{1,100}" />
+        </div>
+
+        <div class="mb-3">
+          <label for="yearInput" class="form-label">Year</label>
+          <input type="text" name="textfield2" id="yearInput" class="form-control" required />
+        </div>
+
+        <div class="text-center mt-3">
+          <button type="submit" name="Submit" class="btn btn-success">Add Question</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

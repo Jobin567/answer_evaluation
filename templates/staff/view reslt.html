@@ -1,0 +1,46 @@
+{% extends 'staff/newstaffindex.html' %}
+{% block body %}
+
+<div class="container mt-5">
+  <div class="card shadow-lg">
+    <div class="card-header bg-dark text-white text-center">
+      <h4 class="mb-0">Exam Scores</h4>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in val %}
+            <tr>
+              <td>{{ i.exam }}</td>
+              <td>{{ i.tm }}/{{ i.fm }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+  .card {
+    border-radius: 10px;
+  }
+  .card-header {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  .table {
+    margin: 0;
+  }
+</style>
+
+{% endblock %}

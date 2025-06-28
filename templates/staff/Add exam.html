@@ -1,0 +1,94 @@
+{#{% extends 'staff/newstaffindex.html' %}#}
+{#{% block body %}#}
+{##}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/add_exam_post">#}
+{#  <table width="200" border="1" class="table table-dark">#}
+{#    <tr>#}
+{#      <th scope="col">Subject</th>#}
+{#      <th scope="col"><label>#}
+{#        <select name="select">#}
+{#            {%  for i in ob %}#}
+{#              <option value="{{ i.id }}">{{ i.SUBJECT.subject }}</option>#}
+{#            {% endfor %}#}
+{#        </select>#}
+{#      </label></th>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center"><strong>Date</strong></div></td>#}
+{#      <td><label>#}
+{#        <div align="center">#}
+{#          <input type="date" name="d1">#}
+{#          </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td><div align="center"><strong>Time</strong></div></td>#}
+{#      <td><label>#}
+{#        <div align="center">#}
+{#          <input type="time" value="" name="t1">#}
+{#          </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2" align="center"><label>#}
+{#        <div align="center">#}
+{#          <input type="submit" name="ADD" value="Submit"  class="btn btn-success"/>#}
+{#          </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#{% endblock %}#}
+
+
+{% extends 'staff/newstaffindex.html' %}
+{% block body %}
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-dark text-white">
+      <h5 class="mb-0">Add New Exam</h5>
+    </div>
+    <div class="card-body">
+      <form id="form1" name="form1" method="post" action="/add_exam_post">
+        <!-- Subject Selection -->
+        <div class="mb-3">
+          <label for="subjectSelect" class="form-label"><strong>Subject</strong></label>
+          <select id="subjectSelect" name="select" class="form-select" required>
+            {% for i in ob %}
+              <option value="{{ i.id }}">{{ i.subject.subjectname }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Date Input -->
+        <div class="mb-3">
+          <label for="dateInput" class="form-label"><strong>Name</strong></label>
+          <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+
+        <!-- Date Input -->
+        <div class="mb-3">
+          <label for="dateInput" class="form-label"><strong>Date</strong></label>
+          <input type="date" id="dateInput" name="d1" class="form-control" required>
+        </div>
+
+        <!-- Time Input -->
+        <div class="mb-3">
+          <label for="timeInput" class="form-label"><strong>Time</strong></label>
+          <input type="time" id="timeInput" name="t1" class="form-control" required>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center">
+          <button type="submit" name="ADD" class="btn btn-success">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+

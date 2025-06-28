@@ -1,0 +1,97 @@
+{#{% extends 'staff/newstaffindex.html' %}#}
+{#{% block body %}#}
+{##}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="300" border="1"  class="table table-dark">#}
+{#    <tr>#}
+{#      <td colspan="4">Exam#}
+{#        <label>#}
+{#        <input type="text" name="textfield" required pattern="[A-Z a-z.]{3,25}"/>#}
+{#      </label>#}
+{#      <label>#}
+{#      <input type="submit" name="Submit" value="Search" />#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td width="31">Subject  </td>#}
+{#      <td width="47">Time</td>#}
+{#      <td width="47">Date</td>#}
+{#      <td width="191">&nbsp;</td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td>&nbsp;{{ i.subject.SUBJECT.subject }}</td>#}
+{#      <td>&nbsp;{{ i.time }}</td>#}
+{#      <td>&nbsp{{ i.date }}</td>#}
+{#      <td><a href="editexam/{{ i.id }}" class="btn btn-info">Edit</a><br><a href="delete_exam_post/{{ i.id }}" class="btn btn-danger">Delete</a></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#    <tr>#}
+{#      <td colspan="4"><div align="center" class="btn btn-success"><a href="add_exm">Add</a></div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#{% endblock %}#}
+
+
+{% extends 'staff/newstaffindex.html' %}
+{% block body %}
+    <br/>
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-dark text-white">
+      <h5 class="mb-0">Exam Schedule</h5>
+    </div>
+    <div class="card-body">
+      <!-- Search Form -->
+      <form id="form1" name="form1" method="post" action="">
+        <div class="row g-3 align-items-center mb-3">
+          <div class="col-auto">
+            <label for="textfield" class="col-form-label">Exam:</label>
+          </div>
+          <div class="col">
+            <input type="text" id="textfield" name="textfield" class="form-control" required pattern="[A-Z a-z.]{3,25}" placeholder="Enter exam name">
+          </div>
+          <div class="col-auto">
+            <button type="submit" name="Submit" class="btn btn-primary">Search</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Exam Table -->
+      <table class="table table-striped table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Date</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in val %}
+          <tr>
+            <td>{{ i.examname }}</td>
+            <td>{{ i.subjectassignedid.subject.subjectname }}</td>
+
+            <td>{{ i.examdate }}</td>
+            <td>
+              <a href="/wrst/{{ i.id }}" class="btn btn-info btn-sm">Result</a>
+              <a href="delete_exam_post/{{ i.id }}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <!-- Add Exam Button -->
+      <div class="text-center mt-3">
+        <a href="/add_exm" class="btn btn-success">Add New Exam</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

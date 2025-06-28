@@ -1,0 +1,71 @@
+{#{% extends 'staff/newstaffindex.html' %}#}
+{#{% block body %}#}
+{##}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="256" border="1" class="table table-dark">#}
+{#   #}
+{#    <tr>#}
+{#      <td>subject</td>#}
+{#      <td width="52">note</td>#}
+{#      <td width="46">date</td>#}
+{#      <td>&nbsp;</td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td>&nbsp;{{ i.SUBJECT.subject }}</td>#}
+{#      <td>{{ i.NOTES }}</td>#}
+{#      <td>{{ i.DATE }}</td>#}
+{#      <td><a href="#">Download</a></td>#}
+{#      <td>&nbsp;</td>#}
+{#      <td><p><a href="edit_note/{{ i.id }}">edit</a></p>#}
+{#      <p><a href="mng_note_delete/{{ i.id }}">delete</a></p></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#    <tr>#}
+{#      <td colspan="4"><a href="/staff_add_note">ADD</a></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#{% endblock %}#}
+
+{% extends 'staff/newstaffindex.html' %}
+{% block body %}
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">Manage Notes</h5>
+    </div>
+    <div class="card-body">
+      <form id="form1" name="form1" method="post" action="">
+        <table class="table table-striped table-bordered table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Subject</th>
+              <th scope="col">Note</th>
+              <th scope="col">Date</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in val %}
+            <tr>
+              <td>{{ i.SUBJECT.subject }}</td>
+              <td>{{ i.NOTES }}</td>
+              <td>{{ i.DATE }}</td>
+              <td>
+                <a href="#" class="btn btn-primary btn-sm">Download</a>
+{#                <a href="edit_note/{{ i.id }}" class="btn btn-info btn-sm">Edit</a>#}
+                <a href="mng_note_delete/{{ i.id }}" class="btn btn-danger btn-sm">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="text-center mt-3">
+          <a href="/staff_add_note" class="btn btn-success">Add New Note</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
